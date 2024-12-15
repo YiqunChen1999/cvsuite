@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cvsuite"
+version = "0.1.0"
+authors = [
+    {name = "Yiqun Chen", email="chenyiqun2021@ia.ac.cn"},
+]
+description = "A suite of computer vision tools."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+dependencies = [
+    "numpy",
+    "iopath",
+    "lvis",
+    "cython",
+    "tqdm",
+    "opencv-python",
+    "scipy",
+    "scikit-image",
+    "scikit-learn",
+    "pyyaml",
+    "pycocotools",
+    "pytest",
+    "tidecv",
+    "wandb",
+]
+
+[project.optional-dependencies]
+build = ["build", "twine"]
+
+[project.urls]
+homepage = "https://github.com/yiqunchen1999/cvsuite"
+repository = "https://github.com/yiqunchen1999/cvsuite"
+documentation = "https://github.com/yiqunchen1999/cvsuite"
+
+[tool.setuptools.packages.find]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*",
+           "scripts*", "tests*", "./cache", "./data",
+           "./runs", "./outputs", "./tmp", "./temp", "output", 
+           "checkpoints",]
+
+[tool.wheel]
+where = ["."]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", 
+           "scripts*", "tests*"]
+
+[tool.setuptools.package-data]
+"cvsuite" = ["py.typed"]
+
+[tool.pyright]
+include = ["cvsuite"]
+exclude = ["cache", "tests", "docs", "build", "dist", ".pytest_cache",
+           ".git", ".github", ".ruff", "data", "wandb", "logs", 
+           "checkpoints", "runs", "results", "predictions", "test",
+           "submissions", "tmp", "output", "outputs", "temp", "tools",
+           "examples", "ckpts", "checkpoints"]
